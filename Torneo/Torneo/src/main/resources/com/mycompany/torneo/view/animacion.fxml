@@ -6,6 +6,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+            fx:controller="com.mycompany.torneo.controller.AnimacionController"
+            fx:id="rootPane"
+            prefWidth="600" prefHeight="400">
+    <children>
+        <Label fx:id="lblCampeon" layoutX="100" layoutY="30" prefWidth="400"
+               style="-fx-font-size: 24px; -fx-text-fill: gold; -fx-font-weight: bold;"
+               alignment="CENTER"/>
+        <ImageView fx:id="imgCampeon" layoutX="150" layoutY="100" fitWidth="300" fitHeight="250"/>
+    </children>    
 </AnchorPane>

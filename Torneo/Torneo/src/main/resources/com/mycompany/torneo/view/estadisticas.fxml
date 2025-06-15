@@ -6,6 +6,22 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+            fx:controller="com.mycompany.torneo.controller.EstadisticaController"
+            prefWidth="700" prefHeight="450">
+    <children>
+        <Label text="Resumen de Estadísticas" layoutX="30" layoutY="20" style="-fx-font-size: 16px;"/>
+        <ListView fx:id="lstResumenEstadisticas" layoutX="30" layoutY="50" prefWidth="300" prefHeight="350"/>
+
+        <Label text="Ranking Global" layoutX="360" layoutY="20" style="-fx-font-size: 16px;"/>
+        <TableView fx:id="tblRanking" layoutX="360" layoutY="50" prefWidth="300" prefHeight="350">
+            <columns>
+                <TableColumn fx:id="colEquipo" text="Equipo" prefWidth="200"/>
+                <TableColumn fx:id="colPuntaje" text="Puntaje" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </children>    
 </AnchorPane>

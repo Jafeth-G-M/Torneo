@@ -4,12 +4,15 @@
     <groupId>com.mycompany</groupId>
     <artifactId>Torneo</artifactId>
     <version>1.0-SNAPSHOT</version>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
+
     <dependencies>
+        <!-- JavaFX -->
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -20,22 +23,82 @@
             <artifactId>javafx-fxml</artifactId>
             <version>13</version>
         </dependency>
+
+        <!-- Gson -->
         <dependency>
-        <groupId>com.google.code.gson</groupId>
-        <artifactId>gson</artifactId>
-        <version>2.10.1</version>
-    </dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+
+        <!-- Webcam -->
+        <dependency>
+            <groupId>com.github.sarxos</groupId>
+            <artifactId>webcam-capture</artifactId>
+            <version>0.3.12</version>
+        </dependency>
+
+        <!-- iText PDF -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-core</artifactId>
+            <version>8.0.3</version>
+            <type>pom</type>
+        </dependency>
+
+        <!-- PdfInvoiceCreator con exclusión -->
+        <dependency>
+            <groupId>io.github.bhaskarkh</groupId>
+            <artifactId>PdfInvoiceCreator</artifactId>
+            <version>1.0.1</version>
+            <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- MOSIP con exclusión -->
+        <dependency>
+            <groupId>io.mosip.registration</groupId>
+            <artifactId>registration-test</artifactId>
+            <version>1.1.5.5-P1</version>
+            <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Spring JCL agregado explícitamente para evitar conflicto -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jcl</artifactId>
+            <version>5.3.34</version>
+        </dependency>
     </dependencies>
+
     <build>
         <plugins>
+            <!-- Compiler plugin con módulo java.desktop -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
                     <release>11</release>
+                    <compilerArgs>
+                        <arg>--add-modules</arg>
+                        <arg>java.desktop</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
+
+            <!-- JavaFX plugin -->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
@@ -45,13 +108,9 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <!-- Default configuration for running -->
-                        <!-- Usage: mvn clean javafx:run -->
                         <id>default-cli</id>
                     </execution>
                     <execution>
-                        <!-- Configuration for manual attach debugging -->
-                        <!-- Usage: mvn clean javafx:run@debug -->
                         <id>debug</id>
                         <configuration>
                             <options>
@@ -60,7 +119,6 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <!-- Configuration for automatic IDE debugging -->
                         <id>ide-debug</id>
                         <configuration>
                             <options>
@@ -69,15 +127,14 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <!-- Configuration for automatic IDE profiling -->
                         <id>ide-profile</id>
                         <configuration>
                             <options>
-				<option>${profiler.jvmargs.arg1}</option>
-				<option>${profiler.jvmargs.arg2}</option>
-				<option>${profiler.jvmargs.arg3}</option>
-				<option>${profiler.jvmargs.arg4}</option>
-				<option>${profiler.jvmargs.arg5}</option>
+                                <option>${profiler.jvmargs.arg1}</option>
+                                <option>${profiler.jvmargs.arg2}</option>
+                                <option>${profiler.jvmargs.arg3}</option>
+                                <option>${profiler.jvmargs.arg4}</option>
+                                <option>${profiler.jvmargs.arg5}</option>
                             </options>
                         </configuration>
                     </execution>

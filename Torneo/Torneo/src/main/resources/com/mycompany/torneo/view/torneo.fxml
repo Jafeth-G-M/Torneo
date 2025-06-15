@@ -6,6 +6,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+            fx:controller="com.mycompany.torneo.controller.TorneoController"
+            prefWidth="700" prefHeight="500">
+    <children>
+        <Label text="Nombre del Torneo" layoutX="20" layoutY="20"/>
+        <TextField fx:id="txtNombreTorneo" layoutX="160" layoutY="20" prefWidth="200"/>
+
+        <Label text="Deporte" layoutX="20" layoutY="60"/>
+        <ComboBox fx:id="cmbDeporte" layoutX="160" layoutY="60" prefWidth="200"/>
+
+        <Label text="Cantidad de Equipos" layoutX="20" layoutY="100"/>
+        <Spinner fx:id="spnCantidadEquipos" layoutX="160" layoutY="100" prefWidth="80"/>
+
+        <Label text="Tiempo por partido (min)" layoutX="20" layoutY="140"/>
+        <Spinner fx:id="spnTiempoPartido" layoutX="160" layoutY="140" prefWidth="80"/>
+
+        <Label text="Equipos Disponibles" layoutX="400" layoutY="20"/>
+        <ListView fx:id="lstEquiposDisponibles" layoutX="400" layoutY="40" prefWidth="250" prefHeight="150"/>
+
+        <Label text="Equipos Seleccionados" layoutX="400" layoutY="210"/>
+        <ListView fx:id="lstEquiposSeleccionados" layoutX="400" layoutY="230" prefWidth="250" prefHeight="150"/>
+
+        <Button text="Agregar >>" layoutX="280" layoutY="80" onAction="#agregarEquipo"/>
+        <Button text="<< Quitar" layoutX="280" layoutY="240" onAction="#quitarEquipo"/>
+
+        <Button text="Crear Torneo" layoutX="160" layoutY="190" onAction="#crearTorneo"/>
+    </children>    
 </AnchorPane>

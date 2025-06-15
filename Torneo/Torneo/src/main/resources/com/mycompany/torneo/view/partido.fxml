@@ -6,6 +6,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+            fx:controller="com.mycompany.torneo.controller.PartidoController"
+            prefWidth="700" prefHeight="400">
+    <children>
+        <Label fx:id="lblEquipo1" layoutX="50" layoutY="20" style="-fx-font-size: 16px;"/>
+        <Label fx:id="lblEquipo2" layoutX="550" layoutY="20" style="-fx-font-size: 16px;"/>
+        <ImageView fx:id="imgEquipo1" layoutX="30" layoutY="50" fitWidth="150" fitHeight="150"/>
+        <ImageView fx:id="imgEquipo2" layoutX="520" layoutY="50" fitWidth="150" fitHeight="150"/>
+        <ImageView fx:id="imgBalon" layoutX="275" layoutY="100" fitWidth="150" fitHeight="150"/>
+
+        <Label fx:id="lblMarcador" layoutX="310" layoutY="260" style="-fx-font-size: 18px;" text="0 - 0"/>
+        <Label fx:id="lblTiempo" layoutX="320" layoutY="290" text="Tiempo" />
+
+        <Button layoutX="100" layoutY="320" text="Gol Equipo 1" onAction="#anotarEquipo1"/>
+        <Button layoutX="500" layoutY="320" text="Gol Equipo 2" onAction="#anotarEquipo2"/>
+        <Button fx:id="btnFinalizar" layoutX="300" layoutY="340" text="Finalizar Partido" onAction="#finalizarPartido"/>
+    </children>    
 </AnchorPane>
