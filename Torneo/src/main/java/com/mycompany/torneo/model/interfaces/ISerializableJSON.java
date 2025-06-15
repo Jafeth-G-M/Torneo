@@ -9,15 +9,9 @@ package com.mycompany.torneo.model.interfaces;
  * @author jafet
  */
 public interface ISerializableJSON {
-    /**
-     * Guarda el objeto actual en un archivo JSON en la ruta dada.
-     * @param ruta Ruta del archivo JSON donde se va a guardar.
-     */
+ 
+    // guarda el obejeto en josn y muestra la ruta en la que se va a guadar
     void guardarJSON(String ruta);
 
-    /**
-     * Carga los datos del objeto desde un archivo JSON en la ruta dada.
-     * @param ruta Ruta del archivo JSON desde donde se va a cargar.
-     */
     void cargarJSON(String ruta);
 }

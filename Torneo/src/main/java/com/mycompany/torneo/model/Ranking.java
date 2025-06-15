@@ -60,7 +60,7 @@ public class Ranking implements ISerializableJSON {
                 return i + 1;
             }
         }
-        return -1; // no encontrado
+        return -1; // esto pasa si no esta
     }
 
     @Override
@@ -73,7 +73,7 @@ public class Ranking implements ISerializableJSON {
         return sb.toString();
     }
 
-    // Implementación de ISerializableJSON
+    //  ISerializablejhson
     @Override
     public void guardarJSON(String ruta) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();

@@ -64,7 +64,7 @@ public class Deporte implements ISerializableJSON {
         return nombre.toLowerCase().hashCode();
     }
 
-    // Métodos de la interfaz ISerializableJSON
+    // interface
 
     @Override
     public void guardarJSON(String ruta) {

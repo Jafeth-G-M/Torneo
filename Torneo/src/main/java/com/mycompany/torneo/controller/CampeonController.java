@@ -4,10 +4,7 @@
  */
 package com.mycompany.torneo.controller;
 
-/**
- *
- * @author jafet
- */
+
 import com.mycompany.torneo.model.Equipo;
 import javafx.animation.FadeTransition;
 import javafx.animation.ScaleTransition;
@@ -28,7 +25,7 @@ public class CampeonController {
             imgCampeon.setImage(new Image("file:" + equipo.getFotoPreferida()));
         }
 
-        // Animación de aparición (Fade + Scale)
+        // cinematic animada con el fade y scale
         FadeTransition fade = new FadeTransition(Duration.seconds(2), imgCampeon);
         fade.setFromValue(0);
         fade.setToValue(1);

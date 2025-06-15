@@ -82,7 +82,7 @@ public class Equipo implements ISerializableJSON {
         return nombre.toLowerCase().hashCode();
     }
 
-    // Implementación de ISerializableJSON
+    // Implementación de iserializablejson
 
     @Override
     public void guardarJSON(String ruta) {

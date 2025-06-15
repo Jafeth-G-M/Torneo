@@ -97,15 +97,13 @@ public class Torneo implements ISerializableJSON {
         return equipos.size() == cantidadEquipos;
     }
     
-    /**
- * Calcula el ranking de equipos basado en partidos ganados.
- * @return Mapa ordenado de equipos con su cantidad de victorias.
- */
+ 
+    //calcula los puntos de los equipos que ganaron y los ordena por cantidad de victorias
 public Map<Equipo, Integer> calcularRanking() {
     Map<Equipo, Integer> ranking = new HashMap<>();
 
     for (Equipo equipo : equipos) {
-        ranking.put(equipo, 0); // iniciar en 0
+        ranking.put(equipo, 0); // inicializa en 0
     }
 
     for (Partido partido : partidos) {
@@ -117,7 +115,7 @@ public Map<Equipo, Integer> calcularRanking() {
         }
     }
 
-    // Ordenar de mayor a menor
+    // ordena de mayor a menor
     return ranking.entrySet().stream()
         .sorted((e1, e2) -> Integer.compare(e2.getValue(), e1.getValue()))
         .collect(Collectors.toMap(
@@ -128,9 +126,8 @@ public Map<Equipo, Integer> calcularRanking() {
         ));
 }
 
-    /**
-     * Genera los partidos aleatorios entre los equipos inscritos.
-     */
+    
+// hace los partidos de forma aleatoria
     public void generarPartidos() {
         partidos.clear();
 
@@ -146,7 +143,7 @@ public Map<Equipo, Integer> calcularRanking() {
         if (mezclados.size() % 2 != 0) {
             Equipo libre = mezclados.get(mezclados.size() - 1);
             System.out.println("⚠ Equipo con pase automático: " + libre.getNombre());
-            // Puedes guardar un partido nulo o especial si lo deseas
+            
         }
     }
 
@@ -155,7 +152,7 @@ public Map<Equipo, Integer> calcularRanking() {
         return nombre + " (" + deporte.getNombre() + ")";
     }
 
-    // Implementación de ISerializableJSON
+    //iserializablejson
     @Override
     public void guardarJSON(String ruta) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();

@@ -51,11 +51,8 @@ public class PartidoController {
     public void setTorneo(Torneo torneo) {
     this.torneo = torneo;
 }
-    /**
-     * Inicializa la pantalla del partido con los datos del partido seleccionado.
-     * @param partido Partido que se jugará.
-     * @param tiempo Tiempo total en minutos.
-     */
+ 
+    //crea la pantalla de juego con los datos del partido y se inicializa el tiempo y partido
     public void inicializarPartido(Partido partido, int tiempo) {
         this.partido = partido;
 
@@ -68,7 +65,7 @@ imgBalon.setOnDragDetected(e -> {
     e.consume();
 });
 
-// Área de gol equipo 1
+// Área del equipo 1
 zonaGol1.setOnDragOver(e -> {
     if (e.getGestureSource() != zonaGol1 && e.getDragboard().hasImage()) {
         e.acceptTransferModes(TransferMode.MOVE);
@@ -81,7 +78,7 @@ zonaGol1.setOnDragDropped(e -> {
     e.consume();
 });
 
-// Área de gol equipo 2
+// Área del equipo 2
 zonaGol2.setOnDragOver(e -> {
     if (e.getGestureSource() != zonaGol2 && e.getDragboard().hasImage()) {
         e.acceptTransferModes(TransferMode.MOVE);
@@ -139,7 +136,7 @@ private void finalizarPartido() {
     partido.finalizarPartido();
     Resultado resultado = partido.getResultado();
 
-    // Verificar si se necesita desempate
+    // Si es empate se mira para que inicie el desempate
     if (resultado == null) {
         TextInputDialog dialog = new TextInputDialog();
         dialog.setTitle("Desempate");
@@ -158,17 +155,17 @@ private void finalizarPartido() {
     lblMarcador.setText("Final: " + partido.toString());
     btnFinalizar.setDisable(true);
 
-    // Verificar si este es el último partido finalizado (torneo terminado)
+    // verfica si es el ultimo partido del torneo
     if (torneo != null) {
         long pendientes = torneo.getPartidos().stream()
             .filter(p -> !p.isFinalizado())
             .count();
 
         if (pendientes == 0) {
-            Equipo equipoGanador = partido.getGanador(); // Último ganador = campeón
+            Equipo equipoGanador = partido.getGanador(); // define el ganador
 
             try {
-                // Mostrar animación de campeón
+                // animacion del que gano
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mycompany/torneo/view/CampeonView.fxml"));
                 Parent root = loader.load();
 
@@ -180,7 +177,7 @@ private void finalizarPartido() {
                 stage.setScene(new Scene(root, 500, 400));
                 stage.showAndWait(); // Espera a que se cierre
 
-                // Mostrar ranking después de la animación
+                // muestra el puntaje despues de la animacion de partido
                 FXMLLoader rankingLoader = new FXMLLoader(getClass().getResource("/com/mycompany/torneo/view/RankingView.fxml"));
                 Parent rankingRoot = rankingLoader.load();
 
@@ -191,7 +188,7 @@ private void finalizarPartido() {
                 rankingStage.setTitle("Ranking Final");
                 rankingStage.setScene(new Scene(rankingRoot, 400, 400));
                 rankingStage.show();
-                // Crear certificado PDF
+                // crea el pdf para el certificado
                 String rutaPDF = "certificados/" + equipoGanador.getNombre() + "_certificado.pdf";
                 PDFUtil.generarCertificado(equipoGanador, torneo, rutaPDF);
   
@@ -207,7 +204,7 @@ private void finalizarPartido() {
         }
     }
 
-    // Cerrar ventana si está en Stage propio
+    // Cierra la ventana si esta stage
     Stage stage = (Stage) btnFinalizar.getScene().getWindow();
     if (stage != null) {
         stage.close();
@@ -219,6 +216,5 @@ private void finalizarPartido() {
     }
 
     private void anotarEquipo2() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        throw new UnsupportedOperationException("Not supported yet."); 
 }

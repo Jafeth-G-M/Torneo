@@ -33,7 +33,7 @@ public class PDFUtil {
     public static void generarCertificado(Equipo equipo, Torneo torneo, String rutaSalida) {
         try {
             File file = new File(rutaSalida);
-            file.getParentFile().mkdirs(); // crear directorios si no existen
+            file.getParentFile().mkdirs(); // crear directorios
 
             PdfWriter writer = new PdfWriter(rutaSalida);
             PdfDocument pdf = new PdfDocument(writer);
@@ -50,7 +50,7 @@ public class PDFUtil {
 
             doc.add(new Paragraph("\n"));
 
-            // Cuerpo
+            // desarrollo
             Paragraph texto = new Paragraph(String.format(
                     "Se otorga el presente certificado al equipo\n\n%s\n\npor haber ganado el torneo\n\n%s\n\nde la disciplina de %s.",
                     equipo.getNombre(),
@@ -91,6 +91,5 @@ public class PDFUtil {
     }
 
     public static void generarCertificado(Equipo equipo, Torneo torneo, Estadistica estadistica) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        throw new UnsupportedOperationException("Not supported yet.");
 }
