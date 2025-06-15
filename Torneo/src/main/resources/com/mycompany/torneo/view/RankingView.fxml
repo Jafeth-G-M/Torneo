@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.mycompany.torneo.controller.RankingController"
+      spacing="10" style="-fx-padding: 20;">
+    <Label text="Ranking de Equipos" style="-fx-font-size: 18px;" />
+    <TableView fx:id="tablaRanking">
+        <columns>
+            <TableColumn fx:id="colEquipo" text="Equipo" prefWidth="200" />
+            <TableColumn fx:id="colVictorias" text="Victorias" prefWidth="100" />
+        </columns>
+    </TableView>
+</VBox>

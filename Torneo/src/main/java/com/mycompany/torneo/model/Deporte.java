@@ -8,8 +8,16 @@ package com.mycompany.torneo.model;
  *
  * @author jafet
  */
-public class Deporte {
-       private String nombre;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mycompany.torneo.model.interfaces.ISerializableJSON;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Deporte implements ISerializableJSON {
+    private String nombre;
     private String imagenBalon;
 
     // Constructor, getters, setters
@@ -38,5 +46,45 @@ public class Deporte {
         this.imagenBalon = imagenBalon;
     }
 
-     
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Deporte deporte = (Deporte) obj;
+        return nombre.equalsIgnoreCase(deporte.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return nombre.toLowerCase().hashCode();
+    }
+
+    // Métodos de la interfaz ISerializableJSON
+
+    @Override
+    public void guardarJSON(String ruta) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (FileWriter writer = new FileWriter(ruta)) {
+            gson.toJson(this, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void cargarJSON(String ruta) {
+        Gson gson = new Gson();
+        try (FileReader reader = new FileReader(ruta)) {
+            Deporte deporte = gson.fromJson(reader, Deporte.class);
+            this.nombre = deporte.nombre;
+            this.imagenBalon = deporte.imagenBalon;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

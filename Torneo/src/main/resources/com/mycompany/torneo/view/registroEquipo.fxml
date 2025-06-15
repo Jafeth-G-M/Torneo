@@ -5,7 +5,31 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+            fx:controller="com.mycompany.torneo.controller.EquipoController"
+            prefWidth="650" prefHeight="450">
+    <children>
+        <Label text="Nombre del Equipo" layoutX="20" layoutY="20"/>
+        <TextField fx:id="txtNombre" layoutX="160" layoutY="20" prefWidth="200"/>
+
+        <Label text="Deporte" layoutX="20" layoutY="60"/>
+        <ComboBox fx:id="cmbDeporte" layoutX="160" layoutY="60" prefWidth="200"/>
+
+        <Label text="Foto del equipo" layoutX="20" layoutY="100"/>
+        <ImageView fx:id="imgFoto" layoutX="160" layoutY="100" fitWidth="150" fitHeight="100"/>
+        <Button text="Seleccionar Foto" layoutX="330" layoutY="100" onAction="#seleccionarFoto"/>
+
+        <Button text="Guardar Equipo" layoutX="160" layoutY="220" onAction="#guardarEquipo"/>
+
+        <TableView fx:id="tblEquipos" layoutX="20" layoutY="260" prefWidth="600" prefHeight="160">
+            <columns>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="250"/>
+                <TableColumn fx:id="colDeporte" text="Deporte" prefWidth="250"/>
+            </columns>
+        </TableView>
+    </children>    
 </AnchorPane>
